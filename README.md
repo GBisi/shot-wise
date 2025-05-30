@@ -1,1 +1,1 @@
-# shot-wise
+# Distributing Quantum Computations, Shot-wise - Codebase
