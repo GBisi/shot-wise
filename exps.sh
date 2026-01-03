@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright 2024 Shot-wise contributors
+# Licensed under the Apache License, Version 2.0. See the LICENSE file for details.
 
 # Function to commit changes and push to remote repository
 commit_and_push() {
@@ -24,16 +26,16 @@ fi
 # Run experiments for all configurations by order
 for file in $(ls configs); do
     echo "Running experiment for configuration $file"
-    
+
     # Remove config.ini if it exists and copy the configuration file
     if [ -f config.ini ]; then
         cp config.ini config.ini.bak
         rm config.ini
     fi
-    cp configs/$file config.ini
+    cp "configs/$file" config.ini
 
     # Run the experiment
-    ./experiment.sh $@ | tee -a exps.log
+    ./experiment.sh "$@" | tee -a exps.log
 
     # Restore the original config.ini file
     if [ -f config.ini.bak ]; then
